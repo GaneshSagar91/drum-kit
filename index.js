@@ -9,11 +9,13 @@ for(var i = 0 ; i < buttonLen ; i++){
     var btnChar = this.textContent ;
 
     makeSound(btnChar);
+    btnAnimation(btnChar);
   });
 }
 
 document.addEventListener("keypress", function(e){
   makeSound(e.key);
+  btnAnimation(e.key)
 });
 
 function makeSound(key){
@@ -53,4 +55,15 @@ function makeSound(key){
       break;
   
   }
+}
+
+function btnAnimation(key){
+  var currentBtn = document.querySelector("." + key);
+  
+  currentBtn.classList.add("pressed");
+  
+  setTimeout(() => {
+    currentBtn.classList.remove("pressed");
+  }, 100);
+
 }
